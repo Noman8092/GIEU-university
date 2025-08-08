@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Registration Section -->
+<section class="register-section py-5" style="  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);">
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-6">
+        <div class="card shadow-lg p-4 rounded animate__animated animate__fadeInUp">
+          <h3 class="text-center mb-4">🎓 Student Registration</h3>
+
+          <form method="POST" onsubmit="return validateForm();">
+            <div class="form-group mb-3">
+              <label>Name</label>
+              <input type="text" name="name" class="form-control" placeholder="Enter your name" required>
+            </div>
+
+            <div class="form-group mb-3">
+              <label>Email</label>
+              <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group mb-3">
+              <label>Password</label>
+              <input type="password" name="password" class="form-control" placeholder="Create password" required>
+            </div>
+
+            <div class="form-group mb-3">
+              <label>Phone Number</label>
+              <input type="tel" name="phone" class="form-control" placeholder="Enter phone number" required>
+            </div>
+
+            <div class="form-group mb-4">
+              <label>Address</label>
+              <textarea name="address" class="form-control" rows="3" placeholder="Your address" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">📥 Register</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<!-- Animate.css -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<script>
+  // GSAP animation
+  gsap.from(".register-section", {
+    opacity: 0,
+    y: 100,
+    duration: 1,
+    ease: "power2.out"
+  });
+
+  // JS Validation (optional enhancement)
+  function validateForm() {
+    const email = document.querySelector('input[name="email"]').value;
+    const phone = document.querySelector('input[name="phone"]').value;
+
+    const phonePattern = /^[0-9]{10}$/;
+    if (!phonePattern.test(phone)) {
+      alert("Please enter a valid 10-digit phone number.");
+      return false;
+    }
+
+    if (!email.includes("@")) {
+      alert("Please enter a valid email address.");
+      return false;
+    }
+
+    return true;
+  }
+</script>
+{% endblock %}

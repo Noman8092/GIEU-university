@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block head %}
+  {{ super() }}
+  <!-- AOS & GSAP libraries -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <style>
+    .blog-img {
+        width: 100px;
+        height: 70px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+    .btn-action {
+        margin-right: 5px;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h2 class="mb-4" data-aos="fade-down">🛠️ Admin - Manage Blogs</h2>
+
+    <!-- Add Blog Form -->
+    <form action="/add_blog" method="POST" enctype="multipart/form-data" class="row g-3 mb-5" data-aos="fade-up">
+        <div class="col-md-6">
+            <input type="text" name="title" class="form-control" placeholder="Blog Title" required>
+        </div>
+        <div class="col-md-6">
+            <input type="text" name="author" class="form-control" placeholder="Author Name" required>
+        </div>
+        <div class="col-12">
+            <textarea name="content" rows="4" class="form-control" placeholder="Blog Content" required></textarea>
+        </div>
+        <div class="col-md-6">
+            <input type="file" name="image" accept="image/*" class="form-control">
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-success w-100">➕ Add Blog</button>
+        </div>
+    </form>
+
+    <!-- Blog Table -->
+    <div class="table-responsive" data-aos="fade-up">
+        <table class="table table-bordered table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Snippet</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for blog in blogs %}
+                <tr>
+                    <td>{{ blog.id }}</td>
+                    <td>
+                        {% if blog.image %}
+                            <img src="{{ url_for('static', filename='uploads/' + blog.image) }}" class="blog-img">
+                        {% else %}
+                            No Image
+                        {% endif %}
+                    </td>
+                    <td>{{ blog.title }}</td>
+                    <td>{{ blog.author }}</td>
+                    <td>{{ blog.content[:100] }}...</td>
+                    <td>{{ blog.date }}</td>
+                    <td>
+                        <a href="/delete_blog/{{ blog.id }}" class="btn btn-danger btn-sm btn-action" onclick="return confirm('Are you sure to delete this blog?')">🗑️ Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    gsap.from("h2", { opacity: 0, y: -50, duration: 1 });
+  </script>
+{% endblock %}

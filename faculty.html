@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block head%}
+<style>
+    .card {
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.9);
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .card:hover {
+        transform: scale(1.03);
+    }
+    body {
+    background: #f5f8ff;
+    /* background: linear-gradient(to right, #0f2027, #203a43, #2c5364); */
+    color: white;
+}
+
+</style>
+{%endblock%}
+{% block content %}
+<!-- Faculty Section -->
+  <section class="py-5" style="  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);">
+    <div class="container">
+      <h2 class="text-center fw-bold mb-5 text-primary">🌟 Our Faculty</h2>
+      <div class="row justify-content-center">
+
+        <!-- Faculty Member 1 -->
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="card faculty-card shadow-sm text-center p-3">
+            <img src="{{ url_for('static', filename='images/faculty3.jpg') }}" class="rounded-circle mx-auto mb-3 img-fluid" alt="Dr. A. Rahman">
+            <h5 class="card-title text-dark">Dr. A. Rahman</h5>
+            <p class="text-muted mb-2">Mathematics</p>
+            <a href="#" class="btn btn-outline-primary btn-sm">View Profile</a>
+          </div>
+        </div>
+
+        <!-- Faculty Member 2 -->
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="card faculty-card shadow-sm text-center p-3">
+            <img src="{{ url_for('static', filename='images/faculty4.jpg') }}" class="rounded-circle mx-auto mb-3 img-fluid" alt="Dr. A. Rahman">
+            <h5 class="card-title text-dark">Ms. Fatima Noor</h5>
+            <p class="text-muted mb-2">Computer Science</p>
+            <a href="#" class="btn btn-outline-primary btn-sm">View Profile</a>
+          </div>
+        </div>
+
+        <!-- Faculty Member 3 -->
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="card faculty-card shadow-sm text-center p-3">
+            <img src="{{ url_for('static', filename='images/faculty4.jpg') }}" class="rounded-circle mx-auto mb-3 img-fluid" alt="Dr. A. Rahman">
+            <h5 class="card-title text-dark">Mr. Imran Khan</h5>
+            <p class="text-muted mb-2">Physics</p>
+            <a href="#" class="btn btn-outline-primary btn-sm">View Profile</a>
+          </div>
+        </div>
+
+        <!-- Faculty Member 4 -->
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="card faculty-card shadow-sm text-center p-3">
+            <img src="{{ url_for('static', filename='images/faculty4.jpg') }}" class="rounded-circle mx-auto mb-3 img-fluid" alt="Dr. A. Rahman">
+            <h5 class="card-title text-dark">Dr. Saira Bano</h5>
+            <p class="text-muted mb-2">Biology</p>
+            <a href="#" class="btn btn-outline-primary btn-sm">View Profile</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+{% endblock %}

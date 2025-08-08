@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}{{ blog[1] }}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+  <div class="row">
+    <!-- Blog Content -->
+    <div class="col-md-8">
+      <a href="{{ url_for('blog_page') }}" class="btn btn-secondary mb-3">← Back to Blogs</a>
+      <h1>{{ blog[1] }}</h1>
+      <p><strong>By:</strong> {{ blog[2] }} | <strong>Date:</strong> {{ blog[5] }}</p>
+
+      {% if blog[4] %}
+        <img src="{{ url_for('static', filename='uploads/' + blog[4]) }}" class="img-fluid rounded mb-4" alt="{{ blog[1] }}">
+      {% endif %}
+
+      <div class="blog-content" style="font-size: 1.1rem; line-height: 1.8;">
+        {{ blog_content|safe }}
+      </div>
+
+      <!-- Tags (dummy example) -->
+      <div class="mt-4">
+        <strong>Tags:</strong>
+        <span class="badge bg-primary">Data</span>
+        <span class="badge bg-secondary">Science</span>
+        <span class="badge bg-success">Career</span>
+      </div>
+
+      <!-- Share Buttons -->
+      <div class="mt-4">
+        <strong>Share:</strong>
+        <a href="https://twitter.com/share?url={{ request.url }}" target="_blank" class="btn btn-outline-primary btn-sm">Twitter</a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.url }}" target="_blank" class="btn btn-outline-primary btn-sm">Facebook</a>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.url }}" target="_blank" class="btn btn-outline-primary btn-sm">LinkedIn</a>
+      </div>
+         <a href="{{ url_for('blog_page') }}" class="btn btn-secondary mt-3">← Back to Blogs</a>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="col-md-4">
+      <div class="bg-light p-3 rounded shadow-sm">
+        <h5>About This Blog</h5>
+        <p>This blog shares career guides, data trends, and education tips to help you grow in your learning journey.</p>
+
+        <hr>
+
+        <h6>Recent Posts</h6>
+        <ul class="list-unstyled">
+          <li><a href="#">How to Learn Python in 2025</a></li>
+          <li><a href="#">Top 5 Tech Careers</a></li>
+          <li><a href="#">Future of AI</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,73 @@
+<footer class="bg-dark text-light pt-5 pb-4 mt-auto text-center">
+  <div class="container">
+    <div class="row">
+
+      <!-- Brand & About -->
+      <div class="col-md-4 mb-4 ">
+        <h5 class="text-uppercase mb-3">
+          <i class="fas fa-graduation-cap text-info me-2"></i>Important Links
+        </h5>
+         <ul class="list-unstyled">
+          <li><a href="{{ url_for('home') }}" class="text-light text-decoration-none"><i class="fas fa-home me-2"></i>Home</a></li>
+          <li><a href="{{ url_for('register') }}" class="text-light text-decoration-none"><i class="fas fa-user-plus me-2"></i>Register</a></li>
+          <li><a href="{{ url_for('login') }}" class="text-light text-decoration-none"><i class="fas fa-sign-in-alt me-2"></i>Login</a></li>
+          <li><a href="{{ url_for('view_students') }}" class="text-light text-decoration-none"><i class="fas fa-users me-2"></i>Students</a></li>
+          <li><a href="{{ url_for('gallery') }}" class="text-light text-decoration-none"><i class="fas fa-images me-2"></i>Gallery</a></li>
+        </ul>
+       
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-md-4 mb-4">
+        <h5 class="text-uppercase mb-3">
+          <i class="fas fa-link text-info me-2"></i>External Links
+        </h5>
+        <ul class="list-unstyled">
+          <li><a href=" https://scholarships.gov.in" class="text-light text-decoration-none">Scholarships</a></li>
+          <li><a href="https://epathshala.nic.in" class="text-light text-decoration-none">ePathshala</a></li>
+          <li><a href="https://ndl.iitkgp.ac.in" class="text-light text-decoration-none">NDLI</a></li>
+          <li><a href=" https://www.ncs.gov.in" class="text-light text-decoration-none"> NCS </a></li>
+          <li><a href=" https://www.vvm.org.in" class="text-light text-decoration-none"> VVM</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact & Social -->
+      <div class="col-md-4 mb-4">
+        <h5 class="text-uppercase mb-3">
+          <i class="fas fa-envelope text-info me-2"></i>Contact
+        </h5>
+           <p class="mb-1"><i class="fas fa-phone me-2"></i>+91 8092388155</p>
+          <p class="mb-3"><i class="fas fa-envelope me-2"></i>noman.codesolutions@gmail.com</p>
+
+        <!-- Social Links -->
+        <div class="d-flex gap-3 fs-5">
+          <a href="#" class="text-light"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-light"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-light"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-light"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="text-light"><i class="fab fa-youtube"></i></a>
+        </div>
+  
+
+    </div>
+  </div>
+   <div class="container">
+        <div class="col-12 bg-black text-white-50 text-center fs-5 pt-2 py-3 mb-2">
+            &copy; All Rights Reserved &mdash; Global Institute of Engineering 2025
+    </div>
+        </div>
+</footer>
+<style>
+  footer a {
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  footer a:hover {
+    color: #17c0eb !important;
+    transform: scale(1.05);
+  }
+
+  footer i {
+    vertical-align: middle;
+  }
+</style>

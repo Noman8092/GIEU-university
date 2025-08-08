@@ -1,0 +1,41 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+
+    <h2 class="text-center mb-3">👋 Welcome, {{ name }}!</h2>
+    <p class="text-center">Here are your available courses:</p>
+
+    <!-- 🎓 Course Cards -->
+    <div class="row">
+        {% for course in courses %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">{{ course.title }}</h5>
+                    <p class="card-text">{{ course.description }}</p>
+                    
+                    {% if course.pdf %}
+                        <a href="{{ url_for('static', filename='course_pdfs/' ~ course.pdf) }}"
+                           class="btn btn-primary mt-2" target="_blank">
+                           📄 Download PDF
+                        </a>
+                    {% else %}
+                        <span class="badge bg-secondary mt-2">No PDF</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- 🎓 Certificate Button -->
+    <div class="text-center mt-4">
+        <a href="/generate_certificate" class="btn btn-success">
+            🎓 Download Certificate
+        </a>
+    </div>
+
+</div>
+{% endblock %}

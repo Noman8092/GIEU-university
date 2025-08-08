@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Add AOS and Typed.js libraries -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+
+<style>
+  .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  .card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+  .card-img-top {
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .card:hover .card-img-top {
+    transform: scale(1.05);
+  }
+</style>
+<section class="py-5" style="  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);">
+    <div class="container py-5 ">
+    <!-- Typing effect heading -->
+    <h2 class="text-center mb-5">
+        <span id="typing-text" class="fw-bold text-primary"></span>
+        
+    </h2>
+
+    <div class="row">
+        {% for book in books %}
+        <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 100 }}">
+        <div class="card h-100 shadow-sm">
+            <img src="{{ url_for('static', filename='images/' ~ book[2]) }}" class="card-img-top" alt="{{ book[1] }}">
+            <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ book[1] }}</h5>
+            <a href="{{ url_for('read_book', filename=book[3]) }}" target="_blank" class="btn btn-outline-primary mt-auto">Read Book</a>
+            </div>
+        </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</section>
+<script>
+  // Typed.js - Heading animation
+  new Typed('#typing-text', {
+    strings: ['Welcome to Noman Raza','Welcome to the Library', 'Read Anywhere, Anytime', 'Explore Our Collection', 'Welcome to Noman Raza'],
+    typeSpeed: 50,
+    backSpeed: 25,
+    loop: true
+  });
+
+  // AOS - Animate on scroll
+  AOS.init({
+    duration: 800,
+    once: true
+  });
+
+  // GSAP - Motion effect on load
+  window.addEventListener('DOMContentLoaded', () => {
+    gsap.from(".card", {
+      y: 50,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.1,
+      ease: "power3.out"
+    });
+  });
+</script>
+
+{% endblock %}

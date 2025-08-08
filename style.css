@@ -1,0 +1,77 @@
+.result-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    background-color: rgb(24, 23, 20);
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    width: 650px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: right;
+}
+
+.school-logo {
+    height: 80px;
+    float: left;
+}
+
+.student-info {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.marks-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.marks-table th,
+.marks-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.encourage {
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+    color: rgb(24, 92, 6);
+    margin-top: 20px;
+    word-spacing: 2px;
+}
+
+.signature {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.about-section {
+    background: linear-gradient(to right, #6b90b4, #3175b9);
+    border-top: 1px solid #dee2e6;
+}
+
+.about-section h2 i {
+    color: #0d6efd;
+}
+
+.about-section p {
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+.about-section img {
+    transition: transform 0.4s ease;
+}
+
+.about-section img:hover {
+    transform: scale(1.05);
+}

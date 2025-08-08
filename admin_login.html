@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="py-5" style="  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);">   <div class="container mt-5">
+        <h2 class="text-center mb-4" style="color:white;">🔐 Admin Login</h2>
+
+        <form method="POST" class="col-md-6 offset-md-3 p-4 shadow rounded bg-light">
+            <div class="mb-3">
+                <label for="username" class="form-label">👤 Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter Username... " class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">🔒 Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter Password... " class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

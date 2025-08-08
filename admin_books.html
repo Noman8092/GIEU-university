@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5">
+  <h2 class="text-center mb-4">Add New Book</h2>
+  <form method="POST" enctype="multipart/form-data" class="mb-5">
+    <div class="mb-3">
+      <input type="text" name="title" class="form-control" placeholder="Book Title" required>
+    </div>
+    <div class="mb-3">
+      <input type="file" name="image" class="form-control" accept="image/*" required>
+    </div>
+    <div class="mb-3">
+      <input type="file" name="file" class="form-control" accept="application/pdf" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Book</button>
+  </form>
+
+  <h3 class="text-center">All Books</h3>
+  <div class="row">
+    {% for book in books %}
+    <div class="col-md-3 mb-4">
+      <div class="card shadow">
+        <img src="{{ url_for('static', filename='images/' ~ book[2]) }}" class="card-img-top" alt="{{ book[1] }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ book[1] }}</h5>
+          <a href="{{ url_for('read_book', filename=book[3]) }}" target="_blank" class="btn btn-sm btn-success">Read</a>
+          <a href="{{ url_for('delete_book', id=book[0]) }}" class="btn btn-sm btn-danger">Delete</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

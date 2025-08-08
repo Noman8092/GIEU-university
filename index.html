@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Result Portal{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+<script>
+  function delayedSubmit() {
+    document.getElementById("loadingOverlay").style.display = "block";
+    setTimeout(() => {
+      document.getElementById("searchForm").submit();
+    }, 5000);
+    return false;
+  }
+</script>
+{% endblock %}
+
+{% block content %}
+ <section class="py-5" style="  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);">
+  <div class="form-card mx-auto p-4 rounded shadow">
+    <h2 class="text-center text-white mb-4">🎓 Student Result Portal</h2>
+    <form id="searchForm" method="POST" onsubmit="return delayedSubmit();">
+      <input type="text" name="roll" class="form-control mb-3" placeholder="Enter Roll No..." required>
+      <input type="text" name="name" class="form-control mb-3" placeholder="Enter Your Name..." required>
+      <button type="submit" class="btn btn-light w-100">View Result</button>
+    </form>
+
+    <div id="loadingOverlay">
+      <img src="{{ url_for('static', filename='islam_half_moom.gif') }}" alt="Loading...">
+      <p class="loading-text">براہ کرم انتظار کریں... نتیجہ لوڈ ہو رہا ہے</p>
+    </div>
+
+    <p class="designer-credit mt-4 text-white text-center">
+      This result card is proudly designed by <u>Noman Raza Mazhari</u>.
+    </p>
+  </div>
+</section>
+{% endblock %}

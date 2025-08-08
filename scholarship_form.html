@@ -1,0 +1,64 @@
+<!-- scholarship_form.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scholarship Application</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">Scholarship Application Form</h2>
+
+    {% if success %}
+      <div class="alert alert-success">{{ success }}</div>
+    {% endif %}
+
+    <form action="/scholarship" method="POST" enctype="multipart/form-data" class="p-4 border bg-white rounded shadow">
+      <div class="mb-3">
+        <label class="form-label">Full Name</label>
+        <input type="text" name="name" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Phone Number</label>
+        <input type="tel" name="phone" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Email Address</label>
+        <input type="email" name="email" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Previous Class</label>
+        <input type="text" name="previous_class" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Reason for Scholarship</label>
+        <textarea name="reason" rows="3" class="form-control" required></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Upload 12th Certificate</label>
+        <input type="file" name="certificate" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Choose Course</label>
+        <select name="course" class="form-select" required>
+          <option value="">-- Select Course --</option>
+          <option value="B.Tech CSE">B.Tech CSE</option>
+          <option value="BCA">BCA</option>
+          <option value="Data Science">Data Science</option>
+          <option value="AI & ML">AI & ML</option>
+          <!-- Add more as needed -->
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Submit Application</button>
+    </form>
+  </div>
+</body>
+</html>

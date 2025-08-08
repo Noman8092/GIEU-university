@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block title %}Result Card{% endblock %}
+
+{% block head %}
+<!-- PDF & Image Export Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+
+<style>
+  .school-logo {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px auto;
+  }
+
+  .designer-credit {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    margin-top: 40px;
+    color: #555;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    font-style: italic;
+    letter-spacing: 0.5px;
+  }
+
+  .card {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: auto;
+  }
+
+  .marks-table {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .marks-table th, .marks-table td {
+    padding: 8px;
+    border: 1px solid #ccc;
+  }
+
+  .download-btn {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+
+  .download-btn:hover {
+    background: #0056b3;
+  }
+
+  .signature {
+    text-align: left;
+    margin-top: 30px;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="resultCard">
+  <div class="card">
+    <div class="contect">
+      <img src="{{ url_for('static', filename='darul_uloom.webp') }}" class="school-logo">
+
+      <h1 style="font-size: 28px; font-family: 'Noto Nastaliq Urdu', serif;">
+        دارالعلوم مظہرِ اسلام مسجد بی بی جی صاحبہ بہاریپور ڈھال
+      </h1>
+
+      <h3 style="word-spacing:10px;">Test Exam Of 2025</h3>
+      <hr>
+
+      <div class="student-info">
+        <p><strong>Roll No :</strong> ---- {{ student.roll }}</p>
+        <p><strong>Name:</strong> ---- {{ student.name }}</p>
+        <p><strong>Position:</strong> ---- {{ student.position }}</p>
+      </div>
+
+      <table class="marks-table">
+        <tr><th>Subjects</th><th>Marks</th></tr>
+        <tr><td>Qur'an Sharif</td><td>{{ student.subjects[0] }}</td></tr>
+        <tr><td>Urdu</td><td>{{ student.subjects[1] }}</td></tr>
+        <tr><td><strong>Total</strong></td><td><strong>{{ student.total }}</strong></td></tr>
+      </table>
+
+      <p class="encourage mt-4">
+        <strong>🎉 Congratulations</strong><br>
+        Your success reflects your hard work, dedication, and sincerity.
+        Keep pursuing the journey of knowledge, for it is the path that leads a person to success in both this world and the Hereafter.
+        <br>May Allah bless you with beneficial knowledge and grant you a bright future. Ameen.
+      </p>
+
+      <div class="signature">
+        <p><b>Principal</b></p>
+        <p style="font-size: 23px; text-decoration: underline; font-family: 'Noto Nastaliq Urdu', serif;">محمد نعمان رضا</p>
+      </div>
+    </div>
+
+    <p class="designer-credit">
+      This result card is proudly designed by <span style="text-decoration: underline;">Noman Raza Mazhari</span>.
+    </p>
+  </div>
+</div>
+  <!-- 🔘 Download Buttons -->
+
+  <a href="/" class="btn btn-outline-secondary">🔁 Search Again</a>
+  <button class="download-btn" onclick="downloadImage()">🖼️ Download as Image</button>
+
+<!-- Scripts -->
+<script>
+
+
+  function downloadImage() {
+    const card = document.getElementById("resultCard");
+    html2canvas(card).then(canvas => {
+      const link = document.createElement("a");
+      link.download = "Result_Card.png";
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    });
+  }
+</script>
+{% endblock %}

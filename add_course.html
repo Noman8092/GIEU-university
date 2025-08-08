@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">📘 Add New Course</h2>
+
+    <form method="POST" enctype="multipart/form-data" class="col-md-6 offset-md-3">
+        <div class="mb-3">
+            <label for="title" class="form-label">Course Title:</label>
+            <input type="text" id="title" name="title" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description:</label>
+            <textarea id="description" name="description" class="form-control" rows="4" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="pdf" class="form-label">Upload Course PDF (optional):</label>
+            <input type="file" id="pdf" name="pdf" accept=".pdf" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">➕ Add Course</button>
+    </form>
+</div>
+{% endblock %}
+
