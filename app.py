@@ -178,7 +178,7 @@ def blog_detail(blog_id):
 # ------------------------------------------------- Home route Public Routes ------------------------------------------>
 @app.route('/')
 def home():
-    return render_template("index1.html")
+    return render_template("index.html")
 #----------------------------------------------------Courses Route ----------------------------------------------------->
 @app.route('/courses')
 def view_courses():
